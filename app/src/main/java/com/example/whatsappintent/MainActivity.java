@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     CountryCodePicker countryCodePicker;
     EditText phone, message;
-    Button sendbtn;
+    Button btn;
     String messagestr, phonestr = "";
 
     @Override
@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         countryCodePicker = findViewById(R.id.countryCode);
         phone = findViewById(R.id.phoneNo);
         message = findViewById(R.id.message);
-        sendbtn = findViewById(R.id.sendbtn);
+        btn = findViewById(R.id.btn);
 
-        sendbtn.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -45,8 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (isWhatappInstalled()){
 
-                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api 4.whatsapp.com/send?phone="+phonestr+
-
+                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://api.whatsapp.com/send?phone="+phonestr+
                                 "&text="+messagestr));
                         startActivity(i);
                         message.setText("");
@@ -55,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
 
                     }else {
 
-                        Toast.makeText(MainActivity.this,"Whatsapp is not installed",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Whatsapp não esta instalado",Toast.LENGTH_SHORT).show();
 
                     }
 
 
                 } else {
 
-                    Toast.makeText(MainActivity.this, "Please fill in the Phone no. and message it can't be empty", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Por favor preencha o numero de telefone. e coloque uma mensagem.", Toast.LENGTH_LONG).show();
 
                 }
 
